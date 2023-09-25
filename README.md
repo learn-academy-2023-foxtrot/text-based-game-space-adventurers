@@ -80,3 +80,10 @@ drifting branch:
 -if get closer: you see the Mars Rover!!! YAY! It takes you to the mars station set up by NASA and you are safe until they come rescue you!
 
 -if user hits a dead end, give them the option of undoing last turn, restarting or quitting. 
+
+Pseudocode
+name: restart 
+input: string "restart"
+output: reloading the game 
+process: create a method that uses the built in method load to restart the game. 
+WHERE DO WE PUT THE METHOD CALL SO THAT THE RESTART METHOD CAN BE USED THROUGH OUT THE WHOLE GAME 
