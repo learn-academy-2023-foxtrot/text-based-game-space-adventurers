@@ -5,6 +5,12 @@ def print_title
     end
   end
 
+  def print_game_over
+    File.readlines('game-over.txt') do |line|
+        line
+    end
+end
+
   def print_astronaut_art
     File.readlines('astronaut.txt') do |line|
         line
@@ -91,6 +97,7 @@ elsif clean_or_not.include? 'restart'
     restart
 else
     puts 'Wrong answer... YOU ARE DEAD. Game Over'
+    puts print_game_over
     exit
 end 
 
@@ -107,6 +114,7 @@ elsif to_fix_or_not.include? 'restart'
     restart
 else
     puts 'Wrong answer... YOU ARE DEAD. Game Over'
+    puts print_game_over
     exit
 end 
 
@@ -120,7 +128,7 @@ else
     puts "oh no, Astronaut #{astronaut_name}! its too late youre drifting into space, and you just realized you left your radio"
 end
 
-puts "use thrusters to go to nearest window and slam it to get your partner's attention, or keep drifting. thrusters OR drifting?"
+puts "use thrusters to go to nearest window and slam it to get your partner's attention, or keep drifting. THRUSTERS OR DRIFTING?"
 
 thrusters = gets.chomp.downcase
 
@@ -133,6 +141,7 @@ elsif thrusters.include? 'drift'
 elsif thrusters.include? 'restart'
 else 
     puts 'Wrong answer... YOU ARE DEAD'
+    puts print_game_over
     exit
 end
 
@@ -146,6 +155,7 @@ if grab_or_pass.include? 'grab'
 elsif grab_or_pass.include? 'pass'
     puts print_asteroid
     puts "The asteroid hits you head-on. You are DEAD. Game over"
+    puts print_game_over
     exit
 elsif grab_or_pass.include? 'restart'
     restart
@@ -169,6 +179,7 @@ elsif north_or_south.include? 'restart'
     restart
 else
     puts 'since you decided to not explore, you die from thirst and lack of oxygen. Game Over'
+    puts print_game_over
     exit
 end
 
@@ -180,10 +191,13 @@ if explore_or_not.include? 'closer'
     exit
 elsif explore_or_not.include? 'stop'
     puts 'you die from thirst and lack of oxygen. Game Over'
+    puts print_game_over
     exit
 elsif explore_or_not.include? 'restart'
     restart
 else
     puts 'you die. Game Over'
+    puts print_game_over
+    puts'MISSION ACCOMPLISHED'
     exit
 end
