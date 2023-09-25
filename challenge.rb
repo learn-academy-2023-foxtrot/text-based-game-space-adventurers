@@ -1,25 +1,20 @@
 # Mission Sanitation Space 
-
-puts 'Welcome to NASA 🚀, what is your last name?'
-
-astronaut_name = gets.chomp
-
-def restart
-    
-end
-
-def print_astronaut_art
-    File.readlines('astronaut.txt') do |line|
+def print_title
+    File.readlines('title.txt') do |line|
       line
     end
   end
-  
-  def print_aliens
-    File.readlines('aliens.txt') do |line|
-      line
+
+  def print_astronaut_art
+    File.readlines('astronaut.txt') do |line|
+        line
     end
 end
-
+def print_aliens
+    File.readlines('aliens.txt') do |line|
+        line
+    end
+end
 def print_mars_landscape
     File.readlines('mars-landscape.txt') do |line|
         line
@@ -49,21 +44,36 @@ def print_space_shuttle
         line
     end
 end
+def restart
+    load 'challenge.rb' 
+end 
+puts print_title
+puts 'Goal is to finish the mission, most answers are yes or no, or your prompt is capitalized. Choose wisely.(If you would like to restart at any point, type "restart")'
+puts 'Welcome to NASA 🚀, what is your last name?'
 
-  puts print_astronaut_art
+astronaut_name = gets.chomp
+
+puts print_astronaut_art
   
 
 puts "Hi Astronaut #{astronaut_name}, you trained for 7 years for this mission, failure is NOT an option here at NASA! Your goal is to complete the mission at all costs. Are you ready?"
 
 status = gets.chomp.downcase
-
-if status.include? 'yes' 
-    puts 'LETS GET STARTED! BLAST OFF!'
-    puts print_space_shuttle
-else 
-    puts "GO HOME, here's 20 for a taxi."
-    exit
-end 
+    if status.include? 'yes' 
+        puts "LET'S GET STARTED! BLAST OFF!"
+        puts print_space_shuttle
+        puts
+        puts
+        puts
+        puts
+    elsif status.include? 'no'
+        puts "GO HOME, here's 20 for a taxi."
+        exit
+    elsif status.include? 'restart'
+        restart
+    else 
+        puts "Yes or no?"
+    end 
 
 puts print_iss
 puts "Astronaut #{astronaut_name} you have docked at the International Space Station, your first mission? Clean the toilets, then clean the outside windows, you were the sanitation worker at NASA for 20 years before astronaut training, this should be no issue. Will you clean the windows?"
@@ -77,6 +87,8 @@ elsif clean_or_not.include? 'no'
     exit
 elsif clean_or_not.include? 'exit'
     exit
+elsif clean_or_not.include? 'restart'
+    restart
 else
     puts 'Wrong answer... YOU ARE DEAD. Game Over'
     exit
@@ -91,6 +103,8 @@ if to_fix_or_not.include? 'yes'
     exit
 elsif to_fix_or_not.include? 'no'
     puts 'uh, oh, you might want to check your tether as it is very loose. check tether, yes OR no?'
+elsif to_fix_or_not.include? 'restart'
+    restart
 else
     puts 'Wrong answer... YOU ARE DEAD. Game Over'
     exit
@@ -100,6 +114,8 @@ to_fix_two = gets.chomp.downcase
 
 if to_fix_two.include? 'yes'
     puts "oh no, Astronaut #{astronaut_name}! its too late you're drifting into space, and you just realized you left your radio"
+elsif to_fix_two.include? 'restart'
+    restart
 else
     puts "oh no, Astronaut #{astronaut_name}! its too late youre drifting into space, and you just realized you left your radio"
 end
@@ -114,6 +130,7 @@ if thrusters.include? 'thrusters'
 elsif thrusters.include? 'drift'
     puts "you keep drifting... it's been 5 minutes, you can barely see the space station now."
     puts print_earth
+elsif thrusters.include? 'restart'
 else 
     puts 'Wrong answer... YOU ARE DEAD'
     exit
@@ -130,6 +147,8 @@ elsif grab_or_pass.include? 'pass'
     puts print_asteroid
     puts "The asteroid hits you head-on. You are DEAD. Game over"
     exit
+elsif grab_or_pass.include? 'restart'
+    restart
 else 
     "You keep drifting..."
 end
@@ -146,6 +165,8 @@ if north_or_south.include? 'north'
     exit
 elsif north_or_south.include? 'south'
     puts 'you head to the dry land and see a small shining metal object thing in front of you, get CLOSER? or STOP exploring?'
+elsif north_or_south.include? 'restart'
+    restart
 else
     puts 'since you decided to not explore, you die from thirst and lack of oxygen. Game Over'
     exit
@@ -160,6 +181,8 @@ if explore_or_not.include? 'closer'
 elsif explore_or_not.include? 'stop'
     puts 'you die from thirst and lack of oxygen. Game Over'
     exit
+elsif explore_or_not.include? 'restart'
+    restart
 else
     puts 'you die. Game Over'
     exit
